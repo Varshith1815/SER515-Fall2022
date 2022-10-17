@@ -10,6 +10,8 @@ public class Facade {
 
 	private Person thePerson;
 
+	private UserInfoItem userInfoItem;
+
 	public boolean login() {
 		return false;
 	}
@@ -38,7 +40,7 @@ public class Facade {
 
 	}
 
-	public void createUser() {
+	public void createUser(UserInfoItem userInfoItem) {
 
 	}
 
