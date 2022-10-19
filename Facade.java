@@ -12,8 +12,16 @@ public class Facade {
 
 	private UserInfoItem userInfoItem;
 
-	public boolean login() {
-		return false;
+	private Login login;
+
+	public void initializeFacade()
+	{
+		System.out.println("Initializing Facade Pattern \n");
+		UserType=login(new Login());
+	}
+
+	public int login(Login log) {
+		return log.user();
 	}
 
 	public void addTrading() {
