@@ -1,7 +1,11 @@
 public class Buyer extends Person {
 
-	public void showMenu() {
+	protected Buyer(ProductMenu theProductMenu) {
+		super(theProductMenu);
+	}
 
+	public void showMenu() {
+		theProductMenu.showMenu();
 	}
 
 	public ProductMenu CreateProductMenu() {

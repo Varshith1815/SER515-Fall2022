@@ -1,8 +1,11 @@
 public abstract class Person {
 
-	private ProductMenu theProductMenu;
+	protected ProductMenu theProductMenu;
 
-	private ProductMenu productMenu;
+	protected Person(ProductMenu theProductMenu) {
+		this.theProductMenu = theProductMenu;
+	}
+
 
 	public void showAddButton() {
 
