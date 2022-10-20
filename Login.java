@@ -1,52 +1,71 @@
 import javax.swing.*;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
+
+import static java.io.File.separator;
 
 public class Login {
 
     private Facade createuser;
 
         public boolean validate(int userType, String username, String password) {
-            UserInfoItem user1= new UserInfoItem();
-            user1.setUserName(username);
-            user1.setUserType(userType);
-            user1.setPassword(password);
-            if (userType== 0) {
-                System.out.println("Welcome Buyer ");
-                if ((username.equalsIgnoreCase("tutu")) && (password.equalsIgnoreCase("1111"))) {
-                    System.out.println("Welcome tutu ");
-                } else if ((username.equalsIgnoreCase("mimi")) && (password.equalsIgnoreCase("2222"))) {
-                    System.out.println("Welcome meme ");
-                } else if ((username.equalsIgnoreCase("nana")) && (password.equalsIgnoreCase("3333"))) {
-                    System.out.println("Welcome nana ");
-                } else {
-                     createuser.createUser(user1);
+            UserInfoItem newuser= new UserInfoItem();
+            newuser.setUserName(username);
+            newuser.setUserType(userType);
+            newuser.setPassword(password);
+            String filePath = null;
+            if(userType==0)
+            {
+                filePath= "BuyerInfo.txt";
+                System.out.println("Hey Buyer: \n");
+            }
+            else if(userType==1)
+            {
+                filePath= "SellerInfo.txt";
+                System.out.println("Hey Seller: \n");
+            }
+            else{ 
+                System.out.println("Enter a valid User Type");
+                System.exit(-1);
+            }
+            Map<String, String> loginCode = new HashMap<>();
+            try {
+                File file = new File(filePath);
+                Scanner scanner = new Scanner(file);
+                while (scanner.hasNextLine()) {
+                    String line = scanner.nextLine();
+                    if(line.contains(":")) {
+                        String[] authValues = line.split(":");
+                        loginCode.put(authValues[0], authValues[1]);
+                    }
                 }
-            } else if(userType==1){
-                System.out.println("Welcome Seller ");
-                if ((username.equalsIgnoreCase("pepe")) && (password.equalsIgnoreCase("3333"))) {
-                   System.out.println("Welcome pepe ");
-                }
-                else {
-                    createuser.createUser(user1);
-                }
-            }else {
+            } catch (FileNotFoundException e) {
+                throw new RuntimeException(e);
+            }
+            if(loginCode.get(username).equalsIgnoreCase(password))
+            {
+                System.out.println("Welcome "+ username +":");
+                return true;
+            }
+            else {
                 System.out.println("Invalid User Type");
                 return false;
             }
-            return true;
-
         }
 
     public int user() {
 
         System.out.println("Enter UserType : \n 0 for Buyer \n 1 for seller");
         @SuppressWarnings("resource")
-        Scanner scan = new Scanner(System.in);
-        int userType = Integer.parseInt(scan.next());
+        Scanner sc = new Scanner(System.in);
+        int userType = Integer.parseInt(sc.next());
         System.out.println("Enter UserName : ");
-        String userName = scan.next();
+        String userName = sc.next();
         System.out.println("Enter Passcode : ");
-        String password = scan.next();
+        String password = sc.next();
         boolean success = validate(userType,userName, password);
         if(success==true)
             return userType;
