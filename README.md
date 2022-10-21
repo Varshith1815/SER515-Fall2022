@@ -1,6 +1,12 @@
 # SER515-Fall2022
 Design Patterns Assignment
 
+1. Facade Pattern -> Facade.java, Login.java
+2. Bridge Pattern -> Person.java, Facade.java,Seller.java, Buyer.java
+3. Factory Pattern -> ProductMenu.java, MeatProductMenu.java,ProduceProductMenu.java
+4. Iterator -> ProductIterator.java, Facade.java
+5. Visitor Pattern -> ReminderVisitor.java, ClassProductList.java, Trading.java
+
 To run the Application please clone the latest pull from GITHUB: https://github.com/Varshith1815/SER515-Fall2022
 and run the execute.java file
 
