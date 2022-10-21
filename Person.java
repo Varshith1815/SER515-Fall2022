@@ -1,3 +1,5 @@
+import java.util.List;
+
 public abstract class Person {
 
 	protected ProductMenu theProductMenu;
@@ -11,7 +13,7 @@ public abstract class Person {
 
 	}
 
-	public abstract void showMenu();
+	public abstract List<String> showMenu();
 
 	public void showViewButton() {
 

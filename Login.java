@@ -12,10 +12,6 @@ public class Login {
     private Facade createuser;
 
         public boolean validate(int userType, String username, String password) {
-            UserInfoItem newuser= new UserInfoItem();
-            newuser.setUserName(username);
-            newuser.setUserType(userType);
-            newuser.setPassword(password);
             String filePath = null;
             if(userType==0)
             {
@@ -58,7 +54,7 @@ public class Login {
 
     public int user() {
 
-        System.out.println("Enter UserType : \n 0 for Buyer \n 1 for seller");
+        System.out.println("Enter UserType : \n0 for Buyer \n1 for seller");
         @SuppressWarnings("resource")
         Scanner sc = new Scanner(System.in);
         int userType = Integer.parseInt(sc.next());

@@ -6,7 +6,8 @@ import java.util.Scanner;
 
 public class MeatProductMenu implements ProductMenu {
 
-	public void showMenu() {
+	public List<String> showMenu() {
+		System.out.println("\nImplementing Factory Pattern to return the desired menu items\n");
          String input="ProductInfo.txt";
 		 List<String> meatProd= new ArrayList<>();
 		 try {
@@ -21,10 +22,7 @@ public class MeatProductMenu implements ProductMenu {
 		 } catch (FileNotFoundException e) {
 			 throw new RuntimeException(e);
 		 }
-		 for(String str: meatProd)
-		 {
-			 System.out.println(str);
-		 }
+		return meatProd;
 
 	}
 
