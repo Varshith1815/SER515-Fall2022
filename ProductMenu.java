@@ -1,8 +1,10 @@
+import java.util.List;
+
 public interface ProductMenu {
 
 	Person person = null;
 
-	public abstract void showMenu();
+	public abstract List<String> showMenu();
 
 	public abstract void showAddButton();
 

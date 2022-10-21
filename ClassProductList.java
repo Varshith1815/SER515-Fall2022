@@ -1,13 +1,19 @@
 public class ClassProductList {
 
+	String str;
 	private ReminderVisitor reminderVisitor;
 
-	private Product[] product;
+	Product product;
 
 	private ProductIterator productIterator;
 
-	public void accept(NodeVisitor visitor) {
-
+	public ClassProductList(String str) {
+		this.str=str;
 	}
+
+	public void accept(NodeVisitor visitor) {
+		visitor.visitProduct(this);
+	}
+
 
 }

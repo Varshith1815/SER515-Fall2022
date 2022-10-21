@@ -6,25 +6,23 @@ import java.util.Scanner;
 
 public class ProduceProductMenu implements ProductMenu {
 
-	public void showMenu() {
+	public List<String> showMenu() {
+		System.out.println("\nImplementing Factory Pattern to return the desired menu Items\n");
 		String input="ProductInfo.txt";
-		List<String> meatProd= new ArrayList<>();
+		List<String> produceProd= new ArrayList<>();
 		try {
 			File inputFile = new File(input);
 			Scanner s = new Scanner(inputFile);
 			while(s.hasNextLine()) {
 				String prod = s.nextLine();
 				if (prod.contains("Produce")) {
-					meatProd.add(prod);
+					produceProd.add(prod);
 				}
 			}
 		} catch (FileNotFoundException e) {
 			throw new RuntimeException(e);
 		}
-		for(String str: meatProd)
-		{
-			System.out.println(str);
-		}
+		return produceProd;
 	}
 
 	public void showAddButton() {
