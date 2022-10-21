@@ -1,7 +1,7 @@
 # SER515-Fall2022
 Design Patterns Assignment
 
-To run the Application please clone the latest pull from GITHUB: 
+To run the Application please clone the latest pull from GITHUB: https://github.com/Varshith1815/SER515-Fall2022
 and run the execute.java file
 
 Sample I/O for Buyer:

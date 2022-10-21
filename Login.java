@@ -11,7 +11,7 @@ public class Login {
 
     private Facade createuser;
 
-        public boolean validate(int userType, String username, String password) {
+        public boolean validate(int userType, String username, String password) throws FileNotFoundException {
             String filePath = null;
             if(userType==0)
             {
@@ -28,7 +28,6 @@ public class Login {
                 System.exit(-1);
             }
             Map<String, String> loginCode = new HashMap<>();
-            try {
                 File file = new File(filePath);
                 Scanner scanner = new Scanner(file);
                 while (scanner.hasNextLine()) {
@@ -38,21 +37,19 @@ public class Login {
                         loginCode.put(authValues[0], authValues[1]);
                     }
                 }
-            } catch (FileNotFoundException e) {
-                throw new RuntimeException(e);
-            }
+
             if(loginCode.get(username).equalsIgnoreCase(password))
             {
                 System.out.println("Welcome "+ username +":");
                 return true;
             }
             else {
-                System.out.println("Invalid User Type");
+                System.out.println("Invalid User Password Please Recheck");
                 return false;
             }
         }
 
-    public int user() {
+    public int user() throws FileNotFoundException {
 
         System.out.println("Enter UserType : \n0 for Buyer \n1 for seller");
         @SuppressWarnings("resource")

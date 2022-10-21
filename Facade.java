@@ -1,3 +1,4 @@
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -23,8 +24,7 @@ public class Facade {
 
 	private Login login;
 
-	public void initializeFacade()
-	{
+	public void initializeFacade() throws FileNotFoundException {
 		System.out.println("\nInitializing Facade Pattern");
 		UserType=login(new Login());
 		System.out.println("\nImplementing Bridge Pattern \n");
@@ -87,7 +87,7 @@ public class Facade {
 		sc1.close();
 	}
 
-	public int login(Login log) {
+	public int login(Login log) throws FileNotFoundException {
 		return log.user();
 	}
 
